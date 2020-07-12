@@ -13,7 +13,7 @@ export class NavbarComponent {
 
 
   openLogin() {
-    const ngbModalOptions: NgbModalOptions = { size: 'lg' };
+    const ngbModalOptions: NgbModalOptions = { size: 'sm' };
     let modal;
   //   if (missingFields) {
   //     ngbModalOptions.backdrop = 'static';
