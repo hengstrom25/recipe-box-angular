@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { NewRecipeModalComponent } from '../main/newRecipe/newRecipe-modal.component';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -12,4 +13,10 @@ export class MainComponent implements OnInit {
     ngOnInit(): void {
     }
 
+    addRecipe() {
+        const ngbModalOptions: NgbModalOptions = { size: 'sm' };
+        let modal;
+        modal = this.modalService.open(NewRecipeModalComponent, ngbModalOptions);
+      //   modalRef.componentInstance.circularButtonId = this.circularButtonId; 
+    }
 }

@@ -30,7 +30,7 @@ const getUsers = (req, res) => {
   const createUser = (request, response) => {
     const { name, username, password } = request.body
   
-    pool.query('INSERT INTO users (name, username, password) VALUES ($1, $2)', [name, username, password], (error, results) => {
+    pool.query('INSERT INTO users (name, username, password) VALUES ($1, $2, $3)', [name, username, password], (error, results) => {
       if (error) {
         throw error
       }
@@ -86,13 +86,13 @@ const getUsers = (req, res) => {
   }
 
   const createRecipe = (request, response) => {
-    const { name, username, password } = request.body
+    const { name, type, link, notes } = request.body
   
-    pool.query('INSERT INTO recipes (name, username, password) VALUES ($1, $2)', [name, username, password], (error, results) => {
+    pool.query('INSERT INTO recipes (name, type, link, notes) VALUES ($1, $2, $3, $4)', [name, type, link, notes], (error, results) => {
       if (error) {
         throw error
       }
-      response.status(201).send(`User added with ID: ${result.insertId}`)
+      response.status(201).send(`Recipe added with ID: ${result.insertId}`)
     })
   }
 

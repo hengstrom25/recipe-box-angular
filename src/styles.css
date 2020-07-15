@@ -35,7 +35,7 @@ button {
 .alignright {
 	float: right;
 }
-.card {
+/* .card {
     margin: 10;
     text-indent: 10px;
     border-width: 3px;
@@ -43,4 +43,4 @@ button {
     border-radius: 3px;
     width: 500px;
     max-width: 500px;
-}
+} */
