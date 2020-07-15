@@ -1,9 +1,9 @@
-<div class="card">
-    <img class="align-left" src="https://assets.bonappetit.com/photos/57aceb5af1c801a1038bc8fb/16:9/w_2560,c_limit/BLOODY-MARY-RESIZED-1-of-1.jpg">
-    <h3 class="type">Beverages</h3>
-    <h2 class="align-right">Bloody Mary</h2>
+<div *ngFor="let recipe of myRecipes" class="card">
+    <img class="align-left" src={{recipe.img}}>
+    <h3 class="type">{{recipe.type}}</h3>
+    <h2 class="align-right">{{recipe.name}}</h2>
     <p [innerHTML]="linkHtml"></p>
     <h3>Notes:</h3>
-    <p>Favorite Recipe!</p>
-    <br>
+    <p>{{recipe.notes}}</p>
+    <button class="delete pull-right">Delete Recipe</button>
 </div>

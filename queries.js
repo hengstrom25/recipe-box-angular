@@ -85,10 +85,21 @@ const getUsers = (req, res) => {
     })
   }
 
+//   const getRecipeByUserId = (request, response) => {
+//     const userId = parseInt(request.params.userId)
+  
+//     pool.query('SELECT * FROM recipe WHERE userId = $5', [userId], (error, results) => {
+//       if (error) {
+//         throw error
+//       }
+//       response.status(200).json(results.rows)
+//     })
+//   }
+
   const createRecipe = (request, response) => {
     const { name, type, link, notes } = request.body
   
-    pool.query('INSERT INTO recipes (name, type, link, notes) VALUES ($1, $2, $3, $4)', [name, type, link, notes], (error, results) => {
+    pool.query('INSERT INTO recipes (name, type, link, notes, userId) VALUES ($1, $2, $3, $4, $5)', [name, type, link, notes], (error, results) => {
       if (error) {
         throw error
       }
@@ -96,6 +107,21 @@ const getUsers = (req, res) => {
     })
   }
 
+  const updateRecipe = (request, response) => {
+    const id = parseInt(request.params.id)
+    const { name, type, link, notes } = request.body
+  
+    pool.query(
+      'UPDATE recipes SET name = $1, type= $2, link= $3, notes= $4, userId=$5 WHERE id = $6',
+      [name, type, link, notes, id],
+      (error, results) => {
+        if (error) {
+          throw error
+        }
+        response.status(200).send(`Recipe modified with ID: ${id}`)
+      }
+    )
+  }
 
   module.exports = {
     getUsers,
@@ -105,5 +131,7 @@ const getUsers = (req, res) => {
     deleteUser,
     getRecipes,
     getRecipeById,
-    createRecipe
+    // getRecipeByUserId,
+    createRecipe,
+    updateRecipe
   }

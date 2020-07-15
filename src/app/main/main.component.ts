@@ -17,6 +17,6 @@ export class MainComponent implements OnInit {
         const ngbModalOptions: NgbModalOptions = { size: 'sm' };
         let modal;
         modal = this.modalService.open(NewRecipeModalComponent, ngbModalOptions);
-      //   modalRef.componentInstance.circularButtonId = this.circularButtonId; 
+      //   modalRef.componentInstance.circularButtonId = this.circularButtonId;
     }
 }
