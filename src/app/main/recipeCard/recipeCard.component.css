@@ -1,8 +1,9 @@
 .card {
     margin-top: 10px;
     text-indent: 10px;
-    border-width: 3px;
-    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(14, 14, 14);
     border-radius: 3px;
     width: 500px;
     background: rgb(249, 246, 246);
@@ -12,4 +13,11 @@ img {
     margin-top: 10px;
     height: auto;
     width: 50%;
+}
+
+.type {
+    width:42%;
+    float: right;
+    text-align: right;
+    margin-right: 10px;
 }

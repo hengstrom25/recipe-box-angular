@@ -4,11 +4,11 @@ h1 {
 }
 h2 {
     font-family: 'Julius Sans One', sans-serif;
-    font-size: 14px;
+    font-size: 18px;
 }
 h3 {
     font-family: 'Julius Sans One', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
 }
 p {
     font-family: 'Julius Sans One', sans-serif;
@@ -24,7 +24,7 @@ button {
 }
 .modal-sm {
     max-width: 200px;
-    margin: auto;
+    /* margin: auto; */
 }
 .modal-content {
     border: 1px black;

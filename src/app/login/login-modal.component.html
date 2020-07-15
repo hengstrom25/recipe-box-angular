@@ -1,11 +1,11 @@
 <div class="modal-content">
     <button (click)="dismiss()" class="alignright">x</button>
     <h2>Please Log In</h2>
-    <form (ngSubmit)="login()">
+    <form>
         <label for="username">Username:</label><br>
         <input type="text" id="username" name="username"><br>
         <label for="password">Password:</label><br>
         <input type="text" id="password" name="password"><br><br>
-        <input type="submit" value="Submit">
+        <input (click)="login()" type="submit" value="Submit">
     </form>
 </div>

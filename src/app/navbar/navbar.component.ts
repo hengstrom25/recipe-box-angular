@@ -1,6 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { LoginModalComponent } from '../login/login-modal.component';
-import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbActiveModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+
+export class NgbdModalContent {
+  @Input() name;
+
+  constructor(public activeModal: NgbActiveModal) {}
+}
 
 @Component({
     selector: 'app-navbar',
@@ -15,12 +21,9 @@ export class NavbarComponent implements OnInit {
       this.isLoggedIn = false;
     }
 
-
   openLogin() {
-    const ngbModalOptions: NgbModalOptions = { size: 'sm' };
-    let modal;
-    modal = this.modalService.open(LoginModalComponent, ngbModalOptions);
-  //   modalRef.componentInstance.circularButtonId = this.circularButtonId;
+    const modalRef = this.modalService.open(LoginModalComponent);
+    modalRef.componentInstance.name = 'Login';
   }
 
 

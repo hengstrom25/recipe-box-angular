@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, OnInit, OnDestroy, Input } from '@angular/core';
-import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbActiveModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-login-modal',
@@ -9,7 +9,9 @@ import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
   })
 
   export class LoginModalComponent {
+    @Input() name;
     constructor(
+      public activeModal: NgbActiveModal,
       private modalService: NgbModal) {}
 
     login() {
