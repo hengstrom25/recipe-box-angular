@@ -9,11 +9,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginModalComponent } from './login/login-modal.component';
 import { RecipeCardComponent } from './main/recipeCard/recipeCard.component';
 import { NewRecipeModalComponent } from './main/newRecipe/newRecipe-modal.component';
+import { CategoriesComponent } from './main/categories/categories.component';
 
 @NgModule({
   declarations: [
     AppComponent, NavbarComponent, LoginModalComponent, MainComponent, RecipeCardComponent,
-    NewRecipeModalComponent
+    NewRecipeModalComponent, CategoriesComponent
   ],
   imports: [
     BrowserModule,
