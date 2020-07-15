@@ -1,7 +1,7 @@
 <div class="modal-content">
     <button (click)="dismiss()" class="alignright">x</button>
     <h2>Please Log In</h2>
-    <form>
+    <form (ngSubmit)="login()">
         <label for="username">Username:</label><br>
         <input type="text" id="username" name="username"><br>
         <label for="password">Password:</label><br>

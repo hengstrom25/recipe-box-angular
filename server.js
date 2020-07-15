@@ -22,5 +22,5 @@ app.delete('/users/:id', db.deleteUser)
 
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080, () => {
-    console.log(`App running on port ${process.env.PORT || 8080}.`)
+    console.log(`App is running on port ${process.env.PORT || 8080}.`)
 });

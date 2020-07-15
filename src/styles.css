@@ -6,6 +6,10 @@ h2 {
     font-family: 'Julius Sans One', sans-serif;
     font-size: 14px;
 }
+h3 {
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 14px;
+}
 p {
     font-family: 'Julius Sans One', sans-serif;
     font-size: 12px;
@@ -30,4 +34,13 @@ button {
 }
 .alignright {
 	float: right;
+}
+.card {
+    margin: 10;
+    text-indent: 10px;
+    border-width: 3px;
+    border-color: black;
+    border-radius: 3px;
+    width: 500px;
+    max-width: 500px;
 }

@@ -7,10 +7,11 @@ import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
     styleUrls: ['./recipeCard.component.css']
   })
 export class RecipeCardComponent implements OnInit {
+linkHtml: string;
   constructor(
     private modalService: NgbModal) {}
+
     ngOnInit(): void {
+        this.linkHtml = '<a href=`https://www.bonappetit.com/recipe/new-new-bloody-mary`>Click for Recipe</a>';
     }
-
-
 }

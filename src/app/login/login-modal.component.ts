@@ -12,6 +12,10 @@ import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
     constructor(
       private modalService: NgbModal) {}
 
+    login() {
+      console.log('click!');
+    }
+
     dismiss(): void { this.modalService.dismissAll(); }
 
   }
