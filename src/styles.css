@@ -2,7 +2,32 @@
 h1 {
     font-family: 'Julius Sans One', sans-serif;
 }
+h2 {
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 14px;
+}
 p {
     font-family: 'Julius Sans One', sans-serif;
     font-size: 12px;
+}
+label {
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 12px;
+}
+button {
+    font-family: 'Julius Sans One', sans-serif;
+    font-size: 12px;
+}
+.modal-sm {
+    max-width: 200px;
+    margin: auto;
+}
+.modal-content {
+    border: 1px black;
+}
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
 }

@@ -7,23 +7,21 @@ import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.css']
   })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+  isLoggedIn: boolean;
   constructor(
     private modalService: NgbModal) {}
+    ngOnInit(): void {
+      this.isLoggedIn = false;
+    }
 
 
   openLogin() {
     const ngbModalOptions: NgbModalOptions = { size: 'sm' };
     let modal;
-  //   if (missingFields) {
-  //     ngbModalOptions.backdrop = 'static';
-  //     ngbModalOptions.keyboard = false;
-  //     modalRef = this.modalService.open(StateOptinModalComponent, ngbModalOptions)
-  //     modalRef.componentInstance.missingFields = missingFields;
-  //   } else {
     modal = this.modalService.open(LoginModalComponent, ngbModalOptions);
-  //   }
   //   modalRef.componentInstance.circularButtonId = this.circularButtonId;
   }
+
 
 }

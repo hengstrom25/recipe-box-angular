@@ -4,12 +4,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MainComponent } from './main/main.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginModalComponent } from './login/login-modal.component';
 
 @NgModule({
   declarations: [
-    AppComponent, NavbarComponent, LoginModalComponent
+    AppComponent, NavbarComponent, LoginModalComponent, MainComponent
   ],
   imports: [
     BrowserModule,
