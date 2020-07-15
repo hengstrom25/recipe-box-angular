@@ -12,6 +12,6 @@ linkHtml: string;
     private modalService: NgbModal) {}
 
     ngOnInit(): void {
-        this.linkHtml = '<a href=`https://www.bonappetit.com/recipe/new-new-bloody-mary`>Click for Recipe</a>';
+        this.linkHtml = '<a href="https://www.bonappetit.com/recipe/new-new-bloody-mary" target="_blank">Click for Recipe</a>';
     }
 }
