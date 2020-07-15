@@ -7,10 +7,13 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginModalComponent } from './login/login-modal.component';
+import { RecipeCardComponent } from './main/recipeCard/recipeCard.component';
+import { NewRecipeModalComponent } from './main/newRecipe/newRecipe-modal.component';
 
 @NgModule({
   declarations: [
-    AppComponent, NavbarComponent, LoginModalComponent, MainComponent
+    AppComponent, NavbarComponent, LoginModalComponent, MainComponent, RecipeCardComponent,
+    NewRecipeModalComponent
   ],
   imports: [
     BrowserModule,
