@@ -4,7 +4,7 @@ const pool = new Pool({
   host: process.env.PG_HOST || 'localhost',
   database: process.env.DATABASE_URL || 'api',
   password: process.env.PG_PASSWORD || 'password',
-  port: PG_PORT || 5432,
+  port: process.env.PG_PORT || 5432,
 //   user: process.env.PG_USER,
 //   host: process.env.PG_HOST,
 //   database: process.env.DATABASE_URL,

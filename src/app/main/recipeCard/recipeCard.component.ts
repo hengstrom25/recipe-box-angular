@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
 import { catchError, mergeMap } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
@@ -14,8 +13,8 @@ export class RecipeCardComponent implements OnInit {
     host: string;
     linkHtml: string;
   constructor(
-    private modalService: NgbModal,
-    private http: HttpClient) {
+    private http: HttpClient,
+    private recipesUrl = 'http://localhost:3000/recipes') {
     this.http = http;
     }
 

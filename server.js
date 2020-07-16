@@ -6,7 +6,13 @@ const app = express();
 
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/recipe-box-angular'));
-// app.use(express.static('src'));
+
+app.use(express.static('src'));
+
+app.use(function(req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    next();
+});
 
 app.get('/*', function(req,res) {
 
