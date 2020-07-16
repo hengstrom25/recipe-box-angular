@@ -13,8 +13,7 @@ export class RecipeCardComponent implements OnInit {
     host: string;
     linkHtml: string;
   constructor(
-    private http: HttpClient,
-    private recipesUrl = 'http://localhost:3000/recipes') {
+    private http: HttpClient) {
     this.http = http;
     }
 
