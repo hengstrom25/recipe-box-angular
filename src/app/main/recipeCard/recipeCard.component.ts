@@ -11,6 +11,7 @@ import { of, Observable } from 'rxjs';
   })
 export class RecipeCardComponent implements OnInit {
     myRecipes: any;
+    host: string;
     linkHtml: string;
   constructor(
     private modalService: NgbModal,
@@ -46,13 +47,14 @@ export class RecipeCardComponent implements OnInit {
         //     }
         // ];
         // https://www.vegetariantimes.com/.image/t_share/MTQ1NjI0ODYwNzc2MjExNTA4/1211_30min_sicilianchard_med_0jpg.jpg
-        console.log(this.getAllRecipes());
+        console.log()
+        this.host = 'http://localhost:3000';
         this.getRecipes();
-        this.linkHtml = '<a href="https://www.bonappetit.com/recipe/new-new-bloody-mary" target="_blank">Click for Recipe</a>';
+        // this.linkHtml = '<a href="https://www.bonappetit.com/recipe/new-new-bloody-mary" target="_blank">Click for Recipe</a>';
     }
 
     getAllRecipes() {
-        return this.http.get('http://localhost:3000/recipes')
+        return this.http.get('/recipes')
             .pipe(mergeMap(res => of({success: true, value: res})),
             catchError(err => of({success: false, message: err}))
         );
