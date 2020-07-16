@@ -3,7 +3,7 @@
     <img class="align-left" src={{recipe.img}}>
     <h3 class="type">{{recipe.type}}</h3>
     <h2 class="align-right">{{recipe.name}}</h2>
-    <p [innerHTML]="linkHtml"></p>
+    <p><a href="{{recipe.link}}" target="_blank">Click for Recipe</a></p>
     <h3>Notes:</h3>
     <p>{{recipe.notes}}</p>
     <button class="delete pull-right">Delete Recipe</button>
