@@ -30,5 +30,6 @@ app.get('/recipes', db.getRecipes)
 
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080, () => {
+    console.log('Hi Heroku')
     console.log(`App is running on port ${process.env.PORT || 8080}.`)
 });
