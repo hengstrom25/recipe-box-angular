@@ -14,13 +14,13 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.get('/*', function(req,res) {
+// app.get('/*', function(req,res) {
 
-res.sendFile(path.join(__dirname+'/dist/recipe-box-angular/src/index.html'));    
-// res.sendFile(path.join(__dirname, '../src' + 'index.html'));
-});
+// res.sendFile(path.join(__dirname+'/dist/recipe-box-angular/src/index.html'));    
+// // res.sendFile(path.join(__dirname, '../src' + 'index.html'));
+// });
 
-app.get('/test', testOne)
+app.get('/api/test', testOne)
 
 function testOne(req, res) {
     console.log('test is working')
