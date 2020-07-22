@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,7 @@ import { CategoriesComponent } from './main/categories/categories.component';
     HttpClientModule,
     AppRoutingModule,
     NgbModule
+    // FlexLayoutModule
   ],
   providers: [],
   entryComponents: [LoginModalComponent],
