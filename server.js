@@ -20,6 +20,13 @@ res.sendFile(path.join(__dirname+'/dist/recipe-box-angular/src/index.html'));
 // res.sendFile(path.join(__dirname, '../src' + 'index.html'));
 });
 
+app.get('/test', testOne)
+
+function testOne(req, res) {
+    console.log('test is working')
+    res.send("hello world")
+}
+
 app.get('/users', db.getUsers)
 app.get('/users/:id', db.getUserById)
 app.post('/users', db.createUser)
