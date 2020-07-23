@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NewRecipeModalComponent } from '../main/newRecipe/newRecipe-modal.component';
+import { NewRecipeModalComponent } from '../main/recipe/newRecipe/newRecipe-modal.component';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

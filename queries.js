@@ -1,15 +1,15 @@
 const Pool = require('pg').Pool
 const pool = new Pool({
-  // user: 'heidi',
-  // host: 'localhost',
-  // database: 'api',
-  // password: 'password',
-  // port: 5432,
-  user: 'kxmswptopbdhxz',
-  host: 'ec2-35-153-12-59.compute-1.amazonaws.com',
-  database: 'd6asbj5kh5obse',
-  password: '0a197c65223142ca6a223579c069da99426771e34b8d38a611e9e8c4abe9cee2',
-  port: '5432',
+  user: 'heidi',
+  host: 'localhost',
+  database: 'api',
+  password: 'password',
+  port: 5432,
+  // user: 'kxmswptopbdhxz',
+  // host: 'ec2-35-153-12-59.compute-1.amazonaws.com',
+  // database: 'd6asbj5kh5obse',
+  // password: '0a197c65223142ca6a223579c069da99426771e34b8d38a611e9e8c4abe9cee2',
+  // port: '5432',
 })
 
 const getUsers = (req, res) => {
@@ -102,9 +102,9 @@ const getUsers = (req, res) => {
 //   }
 
   const createRecipe = (request, response) => {
-    const { name, type, link, notes } = request.body
+    const { name, type, link, notes, img } = request.body
   
-    pool.query('INSERT INTO recipes (name, type, link, notes, userId) VALUES ($1, $2, $3, $4, $5)', [name, type, link, notes], (error, results) => {
+    pool.query('INSERT INTO recipes (name, type, link, notes, img, userId) VALUES ($1, $2, $3, $4, $5, $6)', [name, type, link, notes, img], (error, results) => {
       if (error) {
         throw error
       }

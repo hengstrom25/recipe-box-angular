@@ -32,7 +32,7 @@ app.delete('/users/:id', db.deleteUser)
 
 app.get('/recipes', db.getRecipes)
 // app.get('/recipes/:id', db.getRecipesById)
-// app.post('/users', db.createUser)
+app.post('/recipes', db.createRecipe)
 // app.put('/users/:id', db.updateUser)
 // app.delete('/users/:id', db.deleteUser)
 
