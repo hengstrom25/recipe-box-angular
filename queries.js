@@ -108,6 +108,7 @@ const getUsers = (req, res) => {
       if (error) {
         throw error
       }
+      console.log('here')
       response.status(201).send(`Recipe added with ID: ${result.insertId}`)
     })
   }

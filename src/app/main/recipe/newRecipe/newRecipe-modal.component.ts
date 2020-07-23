@@ -18,7 +18,7 @@ export class NewRecipeModalComponent implements OnInit {
     private modalService: NgbModal) {
     this.http = http;
     }
-    model = new Recipe(1, '', '', '', '', '');
+    model = new Recipe('', '', '', '', '');
     categories = [
       'Breakfast',
       'Soups',
@@ -28,9 +28,8 @@ export class NewRecipeModalComponent implements OnInit {
       'Bread',
       'Dessert',
       'Beverages',
-      'Other',
-      'All'
-    ]
+      'Other'
+    ];
     ngOnInit(): void {
     }
 

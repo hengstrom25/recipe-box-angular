@@ -34,6 +34,7 @@ app.put('/users/:id', db.updateUser)
 app.delete('/users/:id', db.deleteUser)
 
 app.get('/recipes', db.getRecipes)
+app.post('/recipes', db.createRecipe)
 
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080, () => {
