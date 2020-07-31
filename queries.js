@@ -71,6 +71,7 @@ const getUsers = (req, res) => {
   }
 
   const getRecipes = (req, res) => {
+    console.log('getting')
     pool.query('SELECT * FROM recipes ORDER BY id ASC', (error, results) => {
       if (error) {
         throw error
@@ -103,8 +104,9 @@ const getUsers = (req, res) => {
 
   const createRecipe = (request, response) => {
     const { name, type, link, notes, img } = request.body
+    console.log('create')
   
-    pool.query('INSERT INTO recipes (name, type, link, notes, img, userId) VALUES ($1, $2, $3, $4, $5, $6)', [name, type, link, notes, img], (error, results) => {
+    pool.query('INSERT INTO recipes (name, type, link, notes, img) VALUES ($1, $2, $3, $4, $5)', [name, type, link, notes, img], (error, results) => {
       if (error) {
         throw error
       }
