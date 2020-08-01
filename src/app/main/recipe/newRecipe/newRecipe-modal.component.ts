@@ -14,10 +14,16 @@ import { Recipe } from '../recipe';
   })
 export class NewRecipeModalComponent implements OnInit {
   recipes: Recipe[];
+  // httpOptions = {
+  //   headers: {'Content-Type': 'application/json'}
+  //   // 'Access-Control-Allow-Origin': '*',
+  //   // 'Access-Control-Allow-Methods': 'POST'}
+  // };
   httpOptions = {
-    headers: {'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'POST'}
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      // Authorization: 'my-auth-token'
+    })
   };
   constructor(
     private http: HttpClient,
@@ -52,6 +58,7 @@ export class NewRecipeModalComponent implements OnInit {
     save(name: string, type: string, link: string, notes: string, img: string): void {
       this.add({ name, type, link, notes, img } as Recipe)
         .subscribe(recipe => {
+          console.log(this.recipes);
           this.recipes.push(recipe);
         });
     }

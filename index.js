@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const db = require('./queries')
 const port = 3000
-// var cors = require('cors')
+var cors = require('cors')
 
 app.use(bodyParser.json())
 app.use(
@@ -12,10 +12,28 @@ app.use(
   }),
 )
 
+app.use(cors())
+
 app.use(function(req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*");
+    // req.setHeader("Access-Control-Allow-Origin", "*");
+    // res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    // res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     next();
 });
+
+// allowCrossDomain = function(req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+//   if ('OPTIONS' === req.method) {
+//     res.sendStatus(200);
+//   } else {
+//     next();
+//   }
+// };
+
+// app.use(allowCrossDomain);
 
 // app.use(cors({origin: 'http://localhost:3000'}));
 
@@ -32,12 +50,16 @@ app.delete('/users/:id', db.deleteUser)
 
 app.get('/recipes', db.getRecipes)
 // app.get('/recipes/:id', db.getRecipesById)
-app.post('/recipes', (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*")
-  db.createRecipe
-})
+app.post('/recipes', db.createRecipe)
 // app.put('/users/:id', db.updateUser)
 // app.delete('/users/:id', db.deleteUser)
+
+// app.all("/*", function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With");
+//   res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+//   return next();
+// });
 
 app.listen(port, () => {
     console.log(`App running on port ${port}.`)
