@@ -14,12 +14,13 @@ import { Recipe } from '../recipe';
   })
 export class NewRecipeModalComponent implements OnInit {
   recipes: Recipe[];
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      // Authorization: 'my-auth-token'
-    })
-  };
+  newRecipe: any;
+  // httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'Content-Type':  'application/json',
+  //     // Authorization: 'my-auth-token'
+  //   })
+  // };
   constructor(
     private http: HttpClient,
     private modalService: NgbModal) {
@@ -43,22 +44,35 @@ export class NewRecipeModalComponent implements OnInit {
     add(recipe: Recipe): Observable<Recipe> {
       // const recipe = this.model;
       console.log('recipe', recipe);
-      // return this.http.post<Recipe>('http://localhost:3000/recipes', recipe, this.httpOptions).pipe(
+      return this.http.post<any>('http://localhost:3000/recipes', recipe).pipe(
       // // Heroku below
-      return this.http.post<Recipe>('/recipes', recipe, this.httpOptions).pipe(
+      // return this.http.post<any>('/recipes', recipe).pipe(
       tap((newRecipe: Recipe) => console.log(`added recipe ${newRecipe}`)),
       catchError(this.handleError));
     }
 
-    save(name: string, type: string, link: string, notes: string, img: string): void {
-      this.add({ name, type, link, notes, img } as Recipe)
-        .subscribe(recipe => {
-          console.log(this.recipes);
-          this.recipes.push(recipe);
+    save(recipe): void {
+      this.model.name = recipe.name;
+      this.model.type = recipe.type;
+      this.model.link = recipe.link;
+      this.model.notes = recipe.notes;
+      this.model.img = recipe.img;
+      // console.log(this.model);
+      this.add(this.model)
+        .subscribe(res => {
+          console.log('res', res);
+          if (res) {
+            this.dismiss();
+          } else {
+            console.log('nope');
+          }
+          // console.log(this.recipes);
+          // this.recipes.push(recipe);
         });
     }
 
     private handleError(error: HttpErrorResponse) {
+      console.log(error)
       if (error.error instanceof ErrorEvent) {
         // A client-side or network error occurred. Handle it accordingly.
         console.error('An error occurred:', error.error.message);
