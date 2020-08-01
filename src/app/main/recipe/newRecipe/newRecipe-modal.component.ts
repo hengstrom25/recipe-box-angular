@@ -14,11 +14,6 @@ import { Recipe } from '../recipe';
   })
 export class NewRecipeModalComponent implements OnInit {
   recipes: Recipe[];
-  // httpOptions = {
-  //   headers: {'Content-Type': 'application/json'}
-  //   // 'Access-Control-Allow-Origin': '*',
-  //   // 'Access-Control-Allow-Methods': 'POST'}
-  // };
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -48,9 +43,9 @@ export class NewRecipeModalComponent implements OnInit {
     add(recipe: Recipe): Observable<Recipe> {
       // const recipe = this.model;
       console.log('recipe', recipe);
-      return this.http.post<Recipe>('http://localhost:3000/recipes', recipe, this.httpOptions).pipe(
+      // return this.http.post<Recipe>('http://localhost:3000/recipes', recipe, this.httpOptions).pipe(
       // // Heroku below
-      // // return this.http.get('/recipes')
+      return this.http.post<Recipe>('/recipes', recipe, this.httpOptions).pipe(
       tap((newRecipe: Recipe) => console.log(`added recipe ${newRecipe}`)),
       catchError(this.handleError));
     }
