@@ -32,7 +32,10 @@ app.delete('/users/:id', db.deleteUser)
 
 app.get('/recipes', db.getRecipes)
 // app.get('/recipes/:id', db.getRecipesById)
-app.post('/recipes', db.createRecipe)
+app.post('/recipes', (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*")
+  db.createRecipe
+})
 // app.put('/users/:id', db.updateUser)
 // app.delete('/users/:id', db.deleteUser)
 

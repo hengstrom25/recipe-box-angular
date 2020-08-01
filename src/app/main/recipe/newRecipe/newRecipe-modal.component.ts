@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { of, Observable, throwError } from 'rxjs';
 import { catchError, mergeMap, map, tap } from 'rxjs/operators';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { NgbModal, NgbActiveModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
 import { Recipe } from '../recipe';
@@ -13,6 +13,12 @@ import { Recipe } from '../recipe';
     exportAs: 'newRecipeForm'
   })
 export class NewRecipeModalComponent implements OnInit {
+  recipes: Recipe[];
+  httpOptions = {
+    headers: {'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST'}
+  };
   constructor(
     private http: HttpClient,
     private modalService: NgbModal) {
@@ -33,37 +39,21 @@ export class NewRecipeModalComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    save(recipe: Recipe): Observable<Recipe> {
+    add(recipe: Recipe): Observable<Recipe> {
       // const recipe = this.model;
       console.log('recipe', recipe);
-      return this.http.post('http://localhost:3000/recipes', recipe)
+      return this.http.post<Recipe>('http://localhost:3000/recipes', recipe, this.httpOptions).pipe(
       // // Heroku below
       // // return this.http.get('/recipes')
-          // .pipe(mergeMap(res => {
-          //   return of({ value: res, success: true });
-          // }));
-          // .pipe(catchError(err => console.log('err', err)))
-          // .subscribe()
-          // .pipe(
-          //   map(res => {
-          //     console.log('did something');
-          //     return res;
-          //   }),
-          //   catchError(this.handleError)
-          // );
-          .pipe(map(res => res.json()));
-          // .pipe(
-          //   tap((newRecipe: Recipe) => console.log(`added ${newRecipe}`)),
-          //   catchError(this.handleError)
-          // );
-      // );
+      tap((newRecipe: Recipe) => console.log(`added recipe ${newRecipe}`)),
+      catchError(this.handleError));
     }
 
-    addHero(hero: Hero): Observable<Hero> {
-      return this.http.post<Hero>(this.heroesUrl, hero, this.httpOptions).pipe(
-        tap((newHero: Hero) => this.log(`added hero w/ id=${newHero.id}`)),
-        catchError(this.handleError<Hero>('addHero'))
-      );
+    save(name: string, type: string, link: string, notes: string, img: string): void {
+      this.add({ name, type, link, notes, img } as Recipe)
+        .subscribe(recipe => {
+          this.recipes.push(recipe);
+        });
     }
 
     private handleError(error: HttpErrorResponse) {
