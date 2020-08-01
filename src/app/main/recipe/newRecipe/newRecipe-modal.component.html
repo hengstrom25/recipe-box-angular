@@ -2,7 +2,7 @@
     <div class="modal-content">
         <button (click)="dismiss()" class="alignright">x</button>
         <h2>Add New Recipe</h2>
-        <form (ngSubmit)="save()" #newRecipeForm="ngForm">
+        <form (ngSubmit)="save(model)" #newRecipeForm="ngForm">
             <div class="form-group">
                 <label for="name">Name*:</label><br>
                 <input type="text" class="form-control" id="name"
@@ -13,7 +13,6 @@
             <div class="form-group">
                 <label for="type">Category*:</label><br>
                 <select class="form-control" id="type"
-                required
                 [(ngModel)]="model.type" name="type"
                 #type="ngModel">
                   <option *ngFor="let category of categories" [value]="type">{{category}}</option>
