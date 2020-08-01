@@ -2,7 +2,7 @@
     <div class="modal-content">
         <button (click)="dismiss()" class="alignright">x</button>
         <h2>Add New Recipe</h2>
-        <form (ngSubmit)="save(model)" #newRecipeForm="ngForm">
+        <form (ngSubmit)="save(name, type, link, notes, img)" #newRecipeForm="ngForm">
             <div class="form-group">
                 <label for="name">Name*:</label><br>
                 <input type="text" class="form-control" id="name"
