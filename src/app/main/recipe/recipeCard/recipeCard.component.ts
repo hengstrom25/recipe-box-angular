@@ -38,7 +38,7 @@ export class RecipeCardComponent implements OnInit {
 
     getRecipes() {
         this.getAllRecipes()
-        .subscribe((res: any) => {
+        .subscribe(res => {
             if (res.success) {
                 this.myRecipes = res.value;
             }
@@ -53,6 +53,8 @@ export class RecipeCardComponent implements OnInit {
     deleteRecipe(recipe) {
         console.log('delete was called', recipe);
         return this.http.delete<any>(`http://localhost:3000/recipes/${recipe.id}`)
+        // Heroku
+        // return this.http.delete<any>(`/recipes/${recipe.id}`)
         .pipe(mergeMap(res => of({success: true, value: res})),
         catchError(err => of({success: false, message: err}))
         );

@@ -18,9 +18,9 @@ export class NewRecipeModalComponent implements OnInit {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
-      responseType: 'html/text'
       // Authorization: 'my-auth-token'
-    })
+    }),
+    responseType: 'text'
   };
   constructor(
     private http: HttpClient,
@@ -45,7 +45,7 @@ export class NewRecipeModalComponent implements OnInit {
     add(recipe: Recipe): Observable<Recipe> {
       // const recipe = this.model;
       console.log('recipe', recipe);
-      return this.http.post<any>('http://localhost:3000/recipes', recipe).pipe(
+      return this.http.post<any>('http://localhost:3000/recipes', recipe, this.httpOptions).pipe(
       // // Heroku below
       // return this.http.post<any>('/recipes', recipe).pipe(
       tap((newRecipe: Recipe) => console.log(`added recipe ${newRecipe}`)),
