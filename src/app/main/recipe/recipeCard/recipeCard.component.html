@@ -6,5 +6,5 @@
     <p><a href="{{recipe.link}}" target="_blank">Click for Recipe</a></p>
     <h3>Notes:</h3>
     <p>{{recipe.notes}}</p>
-    <button class="delete pull-right">Delete Recipe</button>
+    <button (click)="delete(recipe)" class="delete pull-right">Delete Recipe</button>
 </div>

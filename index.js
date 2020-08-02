@@ -52,14 +52,7 @@ app.get('/recipes', db.getRecipes)
 // app.get('/recipes/:id', db.getRecipesById)
 app.post('/recipes', db.createRecipe)
 // app.put('/users/:id', db.updateUser)
-// app.delete('/users/:id', db.deleteUser)
-
-// app.all("/*", function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With");
-//   res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
-//   return next();
-// });
+app.delete('/recipes/:id', db.deleteRecipe)
 
 app.listen(port, () => {
     console.log(`App running on port ${port}.`)

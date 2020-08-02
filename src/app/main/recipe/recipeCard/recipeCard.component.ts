@@ -49,4 +49,12 @@ export class RecipeCardComponent implements OnInit {
         const modalRef = this.modalService.open(NewRecipeModalComponent);
         modalRef.componentInstance.name = 'New Recipe';
     }
+
+    delete(recipe) {
+        console.log('delete was called');
+        return this.http.delete(`http://localhost:3000/recipes/${recipe.id}`)
+        .pipe(mergeMap(res => of({success: true, value: res})),
+        catchError(err => of({success: false, message: err}))
+        );
+    }
 }
