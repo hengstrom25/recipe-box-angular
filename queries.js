@@ -111,7 +111,7 @@ const getUsers = (req, res) => {
         throw error
       }
       console.log('here')
-      response.status(201).send(`Recipe added with ID: ${result.insertId}`)
+      response.status(201).send(`${name} added to recipes.`)
     })
   }
 
