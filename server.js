@@ -10,9 +10,12 @@ app.use(express.static(__dirname + '/dist/recipe-box-angular'));
 app.use(express.static('src'));
 
 app.use(function(req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    next();
-});
+    res.header('Access-Control-Allow-Origin','*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH');
+      next();
+  });
 
 // app.get('/*', function(req,res) {
 
