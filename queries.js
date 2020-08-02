@@ -1,15 +1,15 @@
 const Pool = require('pg').Pool
 const pool = new Pool({
-  // user: 'heidi',
-  // host: 'localhost',
-  // database: 'api',
-  // password: 'password',
-  // port: 5432,
-  user: 'kxmswptopbdhxz',
-  host: 'ec2-35-153-12-59.compute-1.amazonaws.com',
-  database: 'd6asbj5kh5obse',
-  password: '0a197c65223142ca6a223579c069da99426771e34b8d38a611e9e8c4abe9cee2',
-  port: '5432',
+  user: 'heidi',
+  host: 'localhost',
+  database: 'api',
+  password: 'password',
+  port: 5432,
+  // user: 'kxmswptopbdhxz',
+  // host: 'ec2-35-153-12-59.compute-1.amazonaws.com',
+  // database: 'd6asbj5kh5obse',
+  // password: '0a197c65223142ca6a223579c069da99426771e34b8d38a611e9e8c4abe9cee2',
+  // port: '5432',
 })
 
 const getUsers = (req, res) => {
@@ -111,7 +111,7 @@ const getUsers = (req, res) => {
         throw error
       }
       console.log('here')
-      response.status(201).send(`${name} added to recipes.`)
+      response.status(201).send('New recipe added!')
     })
   }
 
@@ -133,7 +133,7 @@ const getUsers = (req, res) => {
 
   const deleteRecipe = (request, response) => {
     const id = parseInt(request.params.id)
-  
+    console.log('deleting')
     pool.query('DELETE FROM recipes WHERE id = $1', [id], (error, results) => {
       if (error) {
         throw error

@@ -15,12 +15,13 @@ import { Recipe } from '../recipe';
 export class NewRecipeModalComponent implements OnInit {
   recipes: Recipe[];
   newRecipe: any;
-  // httpOptions = {
-  //   headers: new HttpHeaders({
-  //     'Content-Type':  'application/json',
-  //     // Authorization: 'my-auth-token'
-  //   })
-  // };
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      responseType: 'html/text'
+      // Authorization: 'my-auth-token'
+    })
+  };
   constructor(
     private http: HttpClient,
     private modalService: NgbModal) {
@@ -44,15 +45,15 @@ export class NewRecipeModalComponent implements OnInit {
     add(recipe: Recipe): Observable<Recipe> {
       // const recipe = this.model;
       console.log('recipe', recipe);
-      // return this.http.post<any>('http://localhost:3000/recipes', recipe).pipe(
+      return this.http.post<any>('http://localhost:3000/recipes', recipe).pipe(
       // // Heroku below
-      return this.http.post<any>('/recipes', recipe).pipe(
+      // return this.http.post<any>('/recipes', recipe).pipe(
       tap((newRecipe: Recipe) => console.log(`added recipe ${newRecipe}`)),
       catchError(this.handleError));
     }
 
     save(recipe): void {
-      console.log(recipe.type);
+      // console.log(recipe.type);
       this.model.name = recipe.name;
       this.model.type = recipe.type;
       this.model.link = recipe.link;
@@ -60,7 +61,7 @@ export class NewRecipeModalComponent implements OnInit {
       this.model.img = recipe.img;
       // console.log(this.model);
       this.add(this.model)
-        .subscribe(res => {
+        .subscribe((res: any) => {
           console.log('res', res);
           if (res) {
             this.dismiss();
@@ -73,7 +74,7 @@ export class NewRecipeModalComponent implements OnInit {
     }
 
     private handleError(error: HttpErrorResponse) {
-      console.log(error)
+      console.log(error);
       if (error.error instanceof ErrorEvent) {
         // A client-side or network error occurred. Handle it accordingly.
         console.error('An error occurred:', error.error.message);
