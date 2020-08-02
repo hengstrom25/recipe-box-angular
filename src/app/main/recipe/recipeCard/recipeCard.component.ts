@@ -38,7 +38,7 @@ export class RecipeCardComponent implements OnInit {
 
     getRecipes() {
         this.getAllRecipes()
-        .subscribe(res => {
+        .subscribe((res: any) => {
             if (res.success) {
                 this.myRecipes = res.value;
             }

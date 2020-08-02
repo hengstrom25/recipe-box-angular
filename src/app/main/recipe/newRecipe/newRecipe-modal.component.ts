@@ -47,7 +47,7 @@ export class NewRecipeModalComponent implements OnInit {
       console.log('recipe', recipe);
       // return this.http.post<any>('http://localhost:3000/recipes', recipe, this.httpOptions).pipe(
       // // Heroku below
-      return this.http.post<any>('/recipes', recipe).pipe(
+      return this.http.post<any>('/recipes', recipe, this.httpOptions).pipe(
       tap((newRecipe: Recipe) => console.log(`added recipe ${newRecipe}`)),
       catchError(this.handleError));
     }
