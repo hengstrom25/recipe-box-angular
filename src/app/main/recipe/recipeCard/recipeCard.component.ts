@@ -28,9 +28,9 @@ export class RecipeCardComponent implements OnInit {
 
     getAllRecipes() {
         // const baseUrl = window.location.origin;
-        // return this.http.get('http://localhost:3000/recipes')
+        return this.http.get('http://localhost:3000/recipes')
         // Heroku below
-        return this.http.get('/recipes')
+        // return this.http.get('/recipes')
             .pipe(mergeMap(res => of({success: true, value: res})),
             catchError(err => of({success: false, message: err}))
         );

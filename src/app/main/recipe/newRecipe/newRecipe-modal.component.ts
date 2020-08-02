@@ -44,14 +44,15 @@ export class NewRecipeModalComponent implements OnInit {
     add(recipe: Recipe): Observable<Recipe> {
       // const recipe = this.model;
       console.log('recipe', recipe);
-      // return this.http.post<any>('http://localhost:3000/recipes', recipe).pipe(
+      return this.http.post<any>('http://localhost:3000/recipes', recipe).pipe(
       // // Heroku below
-      return this.http.post<any>('/recipes', recipe).pipe(
+      // return this.http.post<any>('/recipes', recipe).pipe(
       tap((newRecipe: Recipe) => console.log(`added recipe ${newRecipe}`)),
       catchError(this.handleError));
     }
 
     save(recipe): void {
+      console.log(recipe.type);
       this.model.name = recipe.name;
       this.model.type = recipe.type;
       this.model.link = recipe.link;

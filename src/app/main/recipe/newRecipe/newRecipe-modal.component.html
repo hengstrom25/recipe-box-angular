@@ -15,7 +15,7 @@
                 <select class="form-control" id="type"
                 [(ngModel)]="model.type" name="type"
                 #type="ngModel">
-                  <option *ngFor="let category of categories" [value]="type">{{category}}</option>
+                  <option *ngFor="let category of categories" [value]="category">{{category}}</option>
                 </select>
             </div>
             <div class="form-group">
