@@ -103,7 +103,7 @@ const getUsers = (req, res) => {
 //   }
 
   const createRecipe = (request, response) => {
-    console.group('request', request)
+    console.group('request', request.body)
     const { name, type, link, notes, img } = request.body
     console.log('create')
   
