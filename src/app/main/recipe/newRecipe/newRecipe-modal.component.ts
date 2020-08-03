@@ -3,7 +3,7 @@ import { of, Observable, throwError } from 'rxjs';
 import { catchError, mergeMap, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { NgbModal, NgbActiveModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
-
+import { getRecipes } from '../recipeCard/recipeCard.component';
 import { Recipe } from '../recipe';
 
 @Component({
@@ -19,7 +19,6 @@ export class NewRecipeModalComponent implements OnInit {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
       Accept: 'text/plain, */*, application/json',
-      // Authorization: 'my-auth-token'
     }),
     responseType: 'text' as 'json'
   };
@@ -46,31 +45,28 @@ export class NewRecipeModalComponent implements OnInit {
     add(recipe: Recipe): Observable<Recipe> {
       // const recipe = this.model;
       console.log('recipe', recipe);
-      // return this.http.post<any>('http://localhost:3000/recipes', recipe, this.httpOptions).pipe(
+      return this.http.post<any>('http://localhost:3000/recipes', recipe, this.httpOptions).pipe(
       // // Heroku below
-      return this.http.post<any>('/recipes', recipe, this.httpOptions).pipe(
+      // return this.http.post<any>('/recipes', recipe, this.httpOptions).pipe(
       tap((newRecipe: Recipe) => console.log(`added recipe ${newRecipe}`)),
       catchError(this.handleError));
     }
 
     save(recipe): void {
-      // console.log(recipe.type);
       this.model.name = recipe.name;
       this.model.type = recipe.type;
       this.model.link = recipe.link;
       this.model.notes = recipe.notes;
       this.model.img = recipe.img;
-      // console.log(this.model);
       this.add(this.model)
         .subscribe((res: any) => {
           console.log('res', res);
           if (res) {
             this.dismiss();
+            getRecipes();
           } else {
             console.log('nope');
           }
-          // console.log(this.recipes);
-          // this.recipes.push(recipe);
         });
     }
 

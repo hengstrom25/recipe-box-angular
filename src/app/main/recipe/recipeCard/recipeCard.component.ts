@@ -12,8 +12,6 @@ import { NewRecipeModalComponent } from '../newRecipe/newRecipe-modal.component'
   })
 export class RecipeCardComponent implements OnInit {
     myRecipes: any;
-    // host: string;
-    // linkHtml: string;
   constructor(
     private http: HttpClient,
     private modalService: NgbModal) {
@@ -28,15 +26,16 @@ export class RecipeCardComponent implements OnInit {
 
     getAllRecipes() {
         // const baseUrl = window.location.origin;
-        // return this.http.get('http://localhost:3000/recipes')
+        return this.http.get('http://localhost:3000/recipes')
         // Heroku below
-        return this.http.get('/recipes')
+        // return this.http.get('/recipes')
             .pipe(mergeMap(res => of({success: true, value: res})),
             catchError(err => of({success: false, message: err}))
         );
     }
 
     getRecipes() {
+        console.log('hey there');
         this.getAllRecipes()
         .subscribe((res: any) => {
             if (res.success) {
@@ -52,9 +51,9 @@ export class RecipeCardComponent implements OnInit {
 
     deleteRecipe(recipe) {
         console.log('delete was called', recipe);
-        // return this.http.delete<any>(`http://localhost:3000/recipes/${recipe.id}`)
+        return this.http.delete<any>(`http://localhost:3000/recipes/${recipe.id}`)
         // Heroku
-        return this.http.delete<any>(`/recipes/${recipe.id}`)
+        // return this.http.delete<any>(`/recipes/${recipe.id}`)
         .pipe(mergeMap(res => of({success: true, value: res})),
         catchError(err => of({success: false, message: err}))
         );
@@ -65,4 +64,7 @@ export class RecipeCardComponent implements OnInit {
         .subscribe();
         this.getRecipes();
     }
+
 }
+
+export function getRecipes() {}
