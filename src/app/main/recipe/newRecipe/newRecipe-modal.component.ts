@@ -18,7 +18,7 @@ export class NewRecipeModalComponent implements OnInit {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
-      Accept: 'text/plain, */*',
+      Accept: 'text/plain, */*, application/json',
       // Authorization: 'my-auth-token'
     }),
     responseType: 'text' as 'json'
