@@ -1,8 +1,16 @@
 //Install express server
 const express = require('express');
+const bodyParser = require('body-parser')
 const path = require('path');
 const db = require('./queries')
 const app = express();
+
+app.use(bodyParser.json())
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  }),
+)
 
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/recipe-box-angular'));
