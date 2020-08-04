@@ -91,6 +91,18 @@ const getUsers = (req, res) => {
     })
   }
 
+  const getRecipesByType = (request, response) => {
+    const type = request.params.type
+    console.log('by type')
+  
+    pool.query('SELECT * FROM recipe WHERE type = $3', [type], (error, results) => {
+      if (error) {
+        throw error
+      }
+      response.status(200).json(results.rows)
+    })
+  }
+
 //   const getRecipeByUserId = (request, response) => {
 //     const userId = parseInt(request.params.userId)
   
@@ -151,6 +163,7 @@ const getUsers = (req, res) => {
     deleteUser,
     getRecipes,
     getRecipeById,
+    getRecipesByType,
     // getRecipeByUserId,
     createRecipe,
     updateRecipe,

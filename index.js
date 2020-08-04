@@ -49,6 +49,7 @@ app.put('/users/:id', db.updateUser)
 app.delete('/users/:id', db.deleteUser)
 
 app.get('/recipes', db.getRecipes)
+// app.get('/recipes/:type', db.getRecipesByType)
 // app.get('/recipes/:id', db.getRecipesById)
 app.post('/recipes', db.createRecipe)
 // app.put('/users/:id', db.updateUser)

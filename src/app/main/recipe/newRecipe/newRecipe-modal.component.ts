@@ -3,7 +3,7 @@ import { of, Observable, throwError } from 'rxjs';
 import { catchError, mergeMap, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { NgbModal, NgbActiveModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
-import { getRecipes } from '../recipeCard/recipeCard.component';
+// import { getRecipes } from '../recipeCard/recipeCard.component';
 import { Recipe } from '../recipe';
 
 @Component({
@@ -63,7 +63,7 @@ export class NewRecipeModalComponent implements OnInit {
           console.log('res', res);
           if (res) {
             this.dismiss();
-            getRecipes();
+            // getRecipes();
           } else {
             console.log('nope');
           }

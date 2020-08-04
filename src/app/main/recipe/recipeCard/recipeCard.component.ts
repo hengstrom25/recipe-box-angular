@@ -4,6 +4,7 @@ import { catchError, mergeMap } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 import { NgbModal, NgbActiveModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { NewRecipeModalComponent } from '../newRecipe/newRecipe-modal.component';
+import { getRecipes } from '../../categories/categories.component';
 
 @Component({
     selector: 'app-recipe-card',
@@ -19,29 +20,40 @@ export class RecipeCardComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        // getRecipes(type);
+        // const recipes = getRecipes();
+        // this.myRecipes = recipes;
+        // getRecipes().then(result => {
+
+        // })
+        console.log('my recipes', this.findRecipes())
         // this.host = 'http://localhost:3000';
-        this.getRecipes();
+        // this.getRecipes();
         // this.linkHtml = '<a href="https://www.bonappetit.com/recipe/new-new-bloody-mary" target="_blank">Click for Recipe</a>';
     }
 
-    getAllRecipes() {
-        // const baseUrl = window.location.origin;
-        return this.http.get('http://localhost:3000/recipes')
-        // Heroku below
-        // return this.http.get('/recipes')
-            .pipe(mergeMap(res => of({success: true, value: res})),
-            catchError(err => of({success: false, message: err}))
-        );
-    }
+    // getAllRecipes() {
+    //     // const baseUrl = window.location.origin;
+    //     return this.http.get('http://localhost:3000/recipes')
+    //     // Heroku below
+    //     // return this.http.get('/recipes')
+    //         .pipe(mergeMap(res => of({success: true, value: res})),
+    //         catchError(err => of({success: false, message: err}))
+    //     );
+    // }
 
-    getRecipes() {
-        console.log('hey there');
-        this.getAllRecipes()
-        .subscribe((res: any) => {
-            if (res.success) {
-                this.myRecipes = res.value;
-            }
-        });
+    // getRecipes() {
+    //     console.log('hey there');
+    //     this.getAllRecipes()
+    //     .subscribe((res: any) => {
+    //         if (res.success) {
+    //             this.myRecipes = res.value;
+    //         }
+    //     });
+    // }
+
+    findRecipes() {
+        getRecipes();
     }
 
     addRecipe() {
@@ -62,9 +74,9 @@ export class RecipeCardComponent implements OnInit {
     delete(recipe) {
         this.deleteRecipe(recipe)
         .subscribe();
-        this.getRecipes();
+        // this.getRecipes();
     }
 
 }
 
-export function getRecipes() {}
+// export function getRecipes() {}
