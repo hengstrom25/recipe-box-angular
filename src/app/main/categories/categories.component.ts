@@ -4,6 +4,8 @@ import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
 import { catchError, mergeMap } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
+import { ApiService } from '../../api.service';
+import { Recipe } from '../recipe/recipe';
 
 @Component({
     selector: 'app-categories',
@@ -12,8 +14,10 @@ import { of, Observable } from 'rxjs';
   })
 export class CategoriesComponent implements OnInit {
     recipesByType: any;
+    recipes: any;
     categories: any;
   constructor(
+    private apiService: ApiService,
     private http: HttpClient) {
     this.http = http;
   }
@@ -31,12 +35,14 @@ export class CategoriesComponent implements OnInit {
           'Other',
           'All'
       ];
+      this.getRecipesForCategory('All');
     }
 
-    // getRecipesForCategory(category) {
-    //   let recipes = this.getRecipes();
-    //   console.log('recipes', recipes)
-    // }
+    getRecipesForCategory(category) {
+      this.apiService.getRecipes(category)
+      .subscribe(recipes => this.recipes = recipes);
+      console.log('recipes', this.recipes);
+    }
 
   // getAllRecipes() {
   //     // const baseUrl = window.location.origin;

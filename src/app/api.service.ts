@@ -15,7 +15,6 @@ export class ApiService {
   }
 
 getAllRecipes() {
-    console.log('getting');
     // const baseUrl = window.location.origin;
     return this.http.get('http://localhost:3000/recipes')
     // Heroku below
@@ -28,14 +27,16 @@ getAllRecipes() {
 getRecipes(type): Observable<any[]> {
     console.log('type', type);
     const selectedRecipes = [];
+    // console.log('1', selectedRecipes);
     this.getAllRecipes()
     .subscribe((res: any) => {
-        console.log('res', res);
         if (res.success) {
           res.value.forEach(recipe => {
+            console.log(recipe.type, type)
             if (type === 'All') {
               selectedRecipes.push(recipe);
             } else if (recipe.type === type) {
+              // selectedRecipes = [];
               selectedRecipes.push(recipe);
             }
           });

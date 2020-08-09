@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, mergeMap } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
@@ -15,8 +15,10 @@ import { Recipe } from '../recipe';
     providers:  [ ApiService ]
   })
 export class RecipeCardComponent implements OnInit {
-    myRecipes: any;
+    @Input() myRecipes: any;
+    // myRecipes: any;
     recipes: Recipe[];
+    category: string;
   constructor(
     private http: HttpClient,
     private modalService: NgbModal,
@@ -25,8 +27,10 @@ export class RecipeCardComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        // console.log(this)
         // this.myRecipes = this.apiService.getRecipes('All');
-        this.findRecipes();
+        // this.findRecipes();
+        // this.category = 'All';
         // getRecipes(type);
         // const recipes = getRecipes();
         // this.myRecipes = recipes;
@@ -60,7 +64,7 @@ export class RecipeCardComponent implements OnInit {
     // }
 
     findRecipes() {
-        this.apiService.getRecipes('All')
+        this.apiService.getRecipes(this.category)
         .subscribe(recipes => this.myRecipes = recipes);
     }
 
