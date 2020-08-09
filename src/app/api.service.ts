@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, mergeMap } from 'rxjs/operators';
+import { Recipe } from './main/recipe/recipe';
 import { of, Observable } from 'rxjs';
 
 @Injectable({
@@ -14,6 +15,7 @@ export class ApiService {
   }
 
 getAllRecipes() {
+    console.log('getting');
     // const baseUrl = window.location.origin;
     return this.http.get('http://localhost:3000/recipes')
     // Heroku below
@@ -23,11 +25,12 @@ getAllRecipes() {
     );
 }
 
-getRecipes(type) {
+getRecipes(type): Observable<any[]> {
     console.log('type', type);
     const selectedRecipes = [];
     this.getAllRecipes()
     .subscribe((res: any) => {
+        console.log('res', res);
         if (res.success) {
           res.value.forEach(recipe => {
             if (type === 'All') {
@@ -38,8 +41,8 @@ getRecipes(type) {
           });
         }
     });
-    console.log(selectedRecipes)
-    return selectedRecipes;
+    console.log(selectedRecipes);
+    return of(selectedRecipes);
 }
 
 }

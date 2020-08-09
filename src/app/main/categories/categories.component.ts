@@ -38,34 +38,34 @@ export class CategoriesComponent implements OnInit {
     //   console.log('recipes', recipes)
     // }
 
-  getAllRecipes() {
-      // const baseUrl = window.location.origin;
-      return this.http.get('http://localhost:3000/recipes')
-      // Heroku below
-      // return this.http.get('/recipes')
-          .pipe(mergeMap(res => of({success: true, value: res})),
-          catchError(err => of({success: false, message: err}))
-      );
-  }
+  // getAllRecipes() {
+  //     // const baseUrl = window.location.origin;
+  //     return this.http.get('http://localhost:3000/recipes')
+  //     // Heroku below
+  //     // return this.http.get('/recipes')
+  //         .pipe(mergeMap(res => of({success: true, value: res})),
+  //         catchError(err => of({success: false, message: err}))
+  //     );
+  // }
 
-  getRecipes(type) {
-      console.log('type', type)
-      const selectedRecipes = [];
-      this.getAllRecipes()
-      .subscribe((res: any) => {
-          if (res.success) {
-            res.value.forEach(recipe => {
-              if (type === 'All') {
-                selectedRecipes.push(recipe);
-              } else if (recipe.type === type) {
-                selectedRecipes.push(recipe);
-              }
-            });
-          }
-      });
-      console.log(selectedRecipes)
-      return selectedRecipes;
-  }
+  // getRecipes(type) {
+  //     console.log('type', type)
+  //     const selectedRecipes = [];
+  //     this.getAllRecipes()
+  //     .subscribe((res: any) => {
+  //         if (res.success) {
+  //           res.value.forEach(recipe => {
+  //             if (type === 'All') {
+  //               selectedRecipes.push(recipe);
+  //             } else if (recipe.type === type) {
+  //               selectedRecipes.push(recipe);
+  //             }
+  //           });
+  //         }
+  //     });
+  //     console.log(selectedRecipes)
+  //     return selectedRecipes;
+  // }
 }
 
-export function getRecipes() {}
+// export function getRecipes() {}

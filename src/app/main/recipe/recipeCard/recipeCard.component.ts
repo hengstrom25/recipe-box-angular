@@ -4,29 +4,36 @@ import { catchError, mergeMap } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 import { NgbModal, NgbActiveModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { NewRecipeModalComponent } from '../newRecipe/newRecipe-modal.component';
-import { getRecipes } from '../../categories/categories.component';
+import { ApiService } from '../../../api.service';
+import { Recipe } from '../recipe';
+// import { getRecipes } from '../../categories/categories.component';
 
 @Component({
     selector: 'app-recipe-card',
     templateUrl: './recipeCard.component.html',
-    styleUrls: ['./recipeCard.component.css']
+    styleUrls: ['./recipeCard.component.css'],
+    providers:  [ ApiService ]
   })
 export class RecipeCardComponent implements OnInit {
     myRecipes: any;
+    recipes: Recipe[];
   constructor(
     private http: HttpClient,
-    private modalService: NgbModal) {
+    private modalService: NgbModal,
+    private apiService: ApiService) {
     this.http = http;
     }
 
     ngOnInit(): void {
+        // this.myRecipes = this.apiService.getRecipes('All');
+        this.findRecipes();
         // getRecipes(type);
         // const recipes = getRecipes();
         // this.myRecipes = recipes;
         // getRecipes().then(result => {
 
         // })
-        console.log('my recipes', this.findRecipes())
+        // console.log('my recipes', this.findRecipes())
         // this.host = 'http://localhost:3000';
         // this.getRecipes();
         // this.linkHtml = '<a href="https://www.bonappetit.com/recipe/new-new-bloody-mary" target="_blank">Click for Recipe</a>';
@@ -53,7 +60,8 @@ export class RecipeCardComponent implements OnInit {
     // }
 
     findRecipes() {
-        getRecipes();
+        this.apiService.getRecipes('All')
+        .subscribe(recipes => this.myRecipes = recipes);
     }
 
     addRecipe() {

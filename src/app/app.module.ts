@@ -3,9 +3,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 // import {DragDropModule} from '@angular/cdk/drag-drop';
 // import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { ApiService } from './api.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -30,7 +31,7 @@ import { CategoriesComponent } from './main/categories/categories.component';
     // DragDropModule
     // FlexLayoutModule
   ],
-  providers: [],
+  providers: [ApiService],
   entryComponents: [LoginModalComponent, NewRecipeModalComponent],
   bootstrap: [AppComponent]
 })
