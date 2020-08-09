@@ -22,7 +22,6 @@ export class CategoriesComponent implements OnInit {
     this.http = http;
   }
     ngOnInit(): void {
-      // this.getRecipes('All');
       this.categories = [
           'Breakfast',
           'Soups',
@@ -41,37 +40,7 @@ export class CategoriesComponent implements OnInit {
     getRecipesForCategory(category) {
       this.apiService.getRecipes(category)
       .subscribe(recipes => this.recipes = recipes);
-      console.log('recipes', this.recipes);
     }
 
-  // getAllRecipes() {
-  //     // const baseUrl = window.location.origin;
-  //     return this.http.get('http://localhost:3000/recipes')
-  //     // Heroku below
-  //     // return this.http.get('/recipes')
-  //         .pipe(mergeMap(res => of({success: true, value: res})),
-  //         catchError(err => of({success: false, message: err}))
-  //     );
-  // }
-
-  // getRecipes(type) {
-  //     console.log('type', type)
-  //     const selectedRecipes = [];
-  //     this.getAllRecipes()
-  //     .subscribe((res: any) => {
-  //         if (res.success) {
-  //           res.value.forEach(recipe => {
-  //             if (type === 'All') {
-  //               selectedRecipes.push(recipe);
-  //             } else if (recipe.type === type) {
-  //               selectedRecipes.push(recipe);
-  //             }
-  //           });
-  //         }
-  //     });
-  //     console.log(selectedRecipes)
-  //     return selectedRecipes;
-  // }
 }
 
-// export function getRecipes() {}

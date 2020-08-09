@@ -16,18 +16,16 @@ export class ApiService {
 
 getAllRecipes() {
     // const baseUrl = window.location.origin;
-    // return this.http.get('http://localhost:3000/recipes')
+    return this.http.get('http://localhost:3000/recipes')
     // Heroku below
-    return this.http.get('/recipes')
+    // return this.http.get('/recipes')
         .pipe(mergeMap(res => of({success: true, value: res})),
         catchError(err => of({success: false, message: err}))
     );
 }
 
 getRecipes(type): Observable<any[]> {
-    console.log('type', type);
     const selectedRecipes = [];
-    // console.log('1', selectedRecipes);
     this.getAllRecipes()
     .subscribe((res: any) => {
         if (res.success) {
@@ -36,7 +34,6 @@ getRecipes(type): Observable<any[]> {
             if (type === 'All') {
               selectedRecipes.push(recipe);
             } else if (recipe.type === type) {
-              // selectedRecipes = [];
               selectedRecipes.push(recipe);
             }
           });
