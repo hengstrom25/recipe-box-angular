@@ -49,7 +49,7 @@ export class EditRecipeModalComponent implements OnInit {
       console.log('recipe', recipe);
     //   return this.http.patch<any>(`http://localhost:3000/recipes/${recipe.id}`, recipe, this.httpOptions).pipe(
       // // Heroku below
-      return this.http.post<any>('/recipes', recipe, this.httpOptions).pipe(
+      return this.http.patch<any>('/recipes', recipe, this.httpOptions).pipe(
       tap((updatedRecipe: Recipe) => console.log(`edited recipe ${updatedRecipe}`)),
       catchError(this.handleError));
     }
