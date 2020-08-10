@@ -47,9 +47,9 @@ export class EditRecipeModalComponent implements OnInit {
     edit(recipe): Observable<Recipe> {
       // const recipe = this.model;
       console.log('recipe', recipe);
-    //   return this.http.patch<any>(`http://localhost:3000/recipes/${recipe.id}`, recipe, this.httpOptions).pipe(
+      return this.http.patch<any>(`http://localhost:3000/recipes/${recipe.id}`, recipe, this.httpOptions).pipe(
       // // Heroku below
-      return this.http.patch<any>(`/recipes/${recipe.id}`, recipe, this.httpOptions).pipe(
+    //   return this.http.patch<any>(`/recipes/${recipe.id}`, recipe, this.httpOptions).pipe(
       tap((updatedRecipe: Recipe) => console.log(`edited recipe ${updatedRecipe}`)),
       catchError(this.handleError));
     }
