@@ -46,6 +46,7 @@ app.delete('/users/:id', db.deleteUser)
 
 app.get('/recipes', db.getRecipes)
 app.post('/recipes', db.createRecipe)
+app.patch('/recipes/:id', db.updateRecipe)
 app.delete('/recipes/:id', db.deleteRecipe)
 
 // Start the app by listening on the default Heroku port

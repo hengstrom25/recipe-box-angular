@@ -14,12 +14,13 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginModalComponent } from './login/login-modal.component';
 import { RecipeCardComponent } from './main/recipe/recipeCard/recipeCard.component';
 import { NewRecipeModalComponent } from './main/recipe/newRecipe/newRecipe-modal.component';
+import { EditRecipeModalComponent } from './main/recipe/editRecipe/editRecipe-modal.component';
 import { CategoriesComponent } from './main/categories/categories.component';
 
 @NgModule({
   declarations: [
     AppComponent, NavbarComponent, LoginModalComponent, MainComponent, RecipeCardComponent,
-    NewRecipeModalComponent, CategoriesComponent
+    NewRecipeModalComponent, EditRecipeModalComponent, CategoriesComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,7 @@ import { CategoriesComponent } from './main/categories/categories.component';
     // FlexLayoutModule
   ],
   providers: [ApiService],
-  entryComponents: [LoginModalComponent, NewRecipeModalComponent],
+  entryComponents: [LoginModalComponent, NewRecipeModalComponent, EditRecipeModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

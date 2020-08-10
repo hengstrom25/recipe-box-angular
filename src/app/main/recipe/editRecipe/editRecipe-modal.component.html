@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="modal-content">
+        <button (click)="dismiss()" class="alignright">x</button>
+        <h2>Edit Recipe</h2>
+        <form (ngSubmit)="save(editRecipeForm.value)" #editRecipeForm="ngForm">
+            <div class="form-group">
+                <label for="name">Name*:</label><br>
+                <input type="text" class="form-control" id="name"
+                required
+                [(ngModel)]="recipe.name" name="name"
+                #name="ngModel">
+            </div>
+            <div class="form-group">
+                <label for="type">Category*:</label><br>
+                <select class="form-control" id="type"
+                required
+                [(ngModel)]="recipe.type" name="type"
+                #type="ngModel">
+                  <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="link">Link*:</label><br>
+                <input type="text" class="form-control" id="link"
+                required
+                [(ngModel)]="recipe.link" name="link"
+                #link="ngModel">
+            </div>
+            <div class="form-group">
+                <label for="notes">Notes:</label><br>
+                <input type="text" class="form-control" id="notes"
+                [(ngModel)]="recipe.notes" name="notes"
+                #notes="ngModel">
+            </div>
+            <div class="form-group">
+                <label for="img">Image (currently supports links to images already found online):</label><br>
+                <input type="text" class="form-control" id="img"
+                [(ngModel)]="recipe.img" name="img"
+                #img="ngModel">
+            </div>
+            <br>
+            <button [disabled]="!editRecipeForm.form.valid" type="submit">Save</button>
+            <!-- <button (click)="dismiss()">Save</button> -->
+        </form>
+    </div>
+</div>

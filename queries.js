@@ -133,7 +133,7 @@ const getUsers = (req, res) => {
     const { name, type, link, notes } = request.body
   
     pool.query(
-      'UPDATE recipes SET name = $1, type= $2, link= $3, notes= $4, userId=$5 WHERE id = $6',
+      'UPDATE recipes SET name = $1, type= $2, link= $3, notes= $4 WHERE id = $5',
       [name, type, link, notes, id],
       (error, results) => {
         if (error) {

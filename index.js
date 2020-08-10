@@ -52,6 +52,7 @@ app.get('/recipes', db.getRecipes)
 // app.get('/recipes/:type', db.getRecipesByType)
 // app.get('/recipes/:id', db.getRecipesById)
 app.post('/recipes', db.createRecipe)
+app.patch('/recipes/:id', db.updateRecipe)
 // app.put('/users/:id', db.updateUser)
 app.delete('/recipes/:id', db.deleteRecipe)
 

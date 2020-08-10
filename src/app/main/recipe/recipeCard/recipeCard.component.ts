@@ -4,6 +4,7 @@ import { catchError, mergeMap } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 import { NgbModal, NgbActiveModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { NewRecipeModalComponent } from '../newRecipe/newRecipe-modal.component';
+import { EditRecipeModalComponent } from '../editRecipe/editRecipe-modal.component';
 import { ApiService } from '../../../api.service';
 import { Recipe } from '../recipe';
 // import { getRecipes } from '../../categories/categories.component';
@@ -37,6 +38,12 @@ export class RecipeCardComponent implements OnInit {
     addRecipe() {
         const modalRef = this.modalService.open(NewRecipeModalComponent);
         modalRef.componentInstance.name = 'New Recipe';
+    }
+
+    edit(recipe) {
+        const modalRef = this.modalService.open(EditRecipeModalComponent);
+        modalRef.componentInstance.name = 'Edit Recipe';
+        modalRef.componentInstance.recipe = recipe;
     }
 
     deleteRecipe(recipe) {
