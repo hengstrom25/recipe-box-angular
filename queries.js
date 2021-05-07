@@ -5,6 +5,7 @@ const pool = new Pool({
   database: 'api',
   password: process.env.PG_PASSWORD,
   port: process.env.PG_PORT,
+  ssl: true
 })
 
 const getUsers = (req, res) => {
