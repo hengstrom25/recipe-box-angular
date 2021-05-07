@@ -1,10 +1,10 @@
 const Pool = require('pg').Pool
 const pool = new Pool({
-  user: 'heidi',
-  host: 'localhost',
+  user: process.env.PG_USER,
+  host: process.env.PG_HOST,
   database: 'api',
-  password: 'password',
-  port: 5432,
+  password: process.env.PG_PASSWORD,
+  port: process.env.PG_PORT,
 })
 
 const getUsers = (req, res) => {
